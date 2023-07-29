@@ -5,7 +5,7 @@ import { useAppSelector } from "@/redux/hook";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useDispatch } from "react-redux";
-import { clearPCBuilder } from "@/redux/pcBuilderSlice";
+import { clearPCBuilder, clearComponent } from "@/redux/pcBuilderSlice";
 import { useRouter } from "next/router";
 
 const PCBuilderPage = ({ categories }) => {
@@ -32,7 +32,7 @@ const PCBuilderPage = ({ categories }) => {
 
     if (selectedCount >= 5) {
       // Show the success toast using react-toastify
-      toast.success("Build completed successfully!");
+      toast.success("Build completed successfully!", { autoClose: 2000 });
 
       // Clear the Redux store for the pcBuilder slice
       dispatch(clearPCBuilder());
@@ -42,6 +42,11 @@ const PCBuilderPage = ({ categories }) => {
         "Please select at least 5 components before completing the build."
       );
     }
+  };
+
+  const handleClearComponent = (category) => {
+    dispatch(clearComponent(category));
+    toast.info(`Cleared ${category}`, { autoClose: 1000 });
   };
 
   return (
@@ -56,13 +61,24 @@ const PCBuilderPage = ({ categories }) => {
               <div className="category-info">
                 <Row justify="space-between">
                   <h2>{category.name}</h2>
-                  <Link
-                    href={`/tool/pc_builder/choose/${encodeURIComponent(
-                      category.url
-                    )}`}
-                  >
-                    <Button type="primary">Choose/Select</Button>
-                  </Link>
+                  {selectedComponents[category.name] ? (
+                    <div>
+                      <Button
+                        type="danger"
+                        onClick={() => handleClearComponent(category.name)}
+                      >
+                        Clear
+                      </Button>
+                    </div>
+                  ) : (
+                    <Link
+                      href={`/tool/pc_builder/choose/${encodeURIComponent(
+                        category.url
+                      )}`}
+                    >
+                      <Button type="default">Choose/Select</Button>
+                    </Link>
+                  )}
                 </Row>
               </div>
             </Card>

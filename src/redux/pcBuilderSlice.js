@@ -30,9 +30,14 @@ const pcBuilderSlice = createSlice({
         Monitor: null,
       };
     },
+    clearComponent: (state, action) => {
+      const category = action.payload;
+      state.selectedComponents[category] = null;
+    },
   },
 });
 
-export const { addComponent, clearPCBuilder } = pcBuilderSlice.actions;
+export const { addComponent, setLoading, clearComponent } =
+  pcBuilderSlice.actions;
 
 export default pcBuilderSlice.reducer;
