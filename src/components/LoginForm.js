@@ -19,7 +19,7 @@ const LoginForm = () => {
     if (user.email && !isLoading) {
       router.push("/");
     }
-  }, [user.email, isLoading]);
+  }, [user.email, isLoading, router]);
 
   return (
     <Card className="form-container">
