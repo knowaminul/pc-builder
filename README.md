@@ -102,12 +102,20 @@ Once the user has added at least 5-6 components (CPU, RAM, Power Supply, Storage
 To run the PC Builder website locally on your machine, follow these steps:
 
 1. Clone the repository:
+```bash
+
 git clone https://github.com/knowaminul/pc-builder.git
 cd pc-builder
+
+```
 2. Install dependencies:
+```bash
 npm install
+```
 3. Run the development server:
+```bash
 npm run dev
+```
 4. Open your web browser and visit `http://localhost:3000` to access the PC Builder website.
 
 ## Conclusion
