@@ -31,12 +31,12 @@ const RootLayout = ({ children }) => {
 
   const categories = [
     { name: "CPU / Processor", url: "cpu-or-processor" },
-    { name: "Others", url: "others" },
     { name: "Power Supply Unit", url: "power-supply-unit" },
-    { name: "Monitor", url: "monitor" },
-    { name: "RAM", url: "ram" },
-    { name: "Storage Device", url: "storage-device" },
     { name: "Motherboard", url: "motherboard" },
+    { name: "RAM", url: "ram" },
+    { name: "Monitor", url: "monitor" },
+    { name: "Storage Device", url: "storage-device" },
+    { name: "Others", url: "others" },
   ];
 
   return (
@@ -71,7 +71,7 @@ const RootLayout = ({ children }) => {
             >
               {categories.map((category) => (
                 <Menu.Item key={category.url}>
-                  <Link href={category.url}>{category.name}</Link>
+                  <Link href={`/${category.url}`}>{category.name}</Link>
                 </Menu.Item>
               ))}
             </Menu.SubMenu>
