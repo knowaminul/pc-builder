@@ -1,6 +1,6 @@
 import React from "react";
 import RootLayout from "@/components/Layouts/RootLayout";
-import { Row, Col, Image, Typography, Tag, Divider, Rate } from "antd";
+import { Row, Col, Image, Typography, Tag, Divider, Rate, Card } from "antd";
 import styles from "@/styles/ProductDetailPage.module.css";
 
 const { Title, Paragraph } = Typography;
@@ -13,36 +13,38 @@ const ProductDetailPage = ({ product }) => {
         justifyContent: "space-between",
       }}
     >
-      <Row gutter={[16, 16]}>
-        <Col xs={24} md={12} lg={12}>
-          <Image
-            src={product.image}
-            alt={product.productName}
-            className={styles.product_image}
-          />
-        </Col>
-        <Col xs={24} md={12} lg={12} className={styles.product_info}>
-          <Title level={2}>{product.productName}</Title>
-          <Paragraph>Category: {product.category}</Paragraph>
-          <Paragraph>
-            Status:{" "}
-            <Tag color={product.status === "In Stock" ? "green" : "red"}>
-              {product.status}
-            </Tag>
-          </Paragraph>
-          <Paragraph>Price: ${product.price}</Paragraph>
-          <Title level={4}>Description</Title>
-          <Paragraph>{product.description}</Paragraph>
-          <Title level={4}>Key Features</Title>
-          <ul className={styles.key_features_list}>
-            {product.keyFeatures.map((feature, index) => (
-              <li key={index} className={styles.key_feature_item}>
-                {feature}
-              </li>
-            ))}
-          </ul>
-        </Col>
-      </Row>
+      <Card>
+        <Row gutter={[16, 16]}>
+          <Col xs={24} md={12} lg={12}>
+            <Image
+              src={product.image}
+              alt={product.productName}
+              className={styles.product_image}
+            />
+          </Col>
+          <Col xs={24} md={12} lg={12} className={styles.product_info}>
+            <Title level={2}>{product.productName}</Title>
+            <Paragraph>Category: {product.category}</Paragraph>
+            <Paragraph>
+              Status:{" "}
+              <Tag color={product.status === "In Stock" ? "green" : "red"}>
+                {product.status}
+              </Tag>
+            </Paragraph>
+            <Paragraph>Price: ${product.price}</Paragraph>
+            <Title level={4}>Description</Title>
+            <Paragraph>{product.description}</Paragraph>
+            <Title level={4}>Key Features</Title>
+            <ul className={styles.key_features_list}>
+              {product.keyFeatures.map((feature, index) => (
+                <li key={index} className={styles.key_feature_item}>
+                  {feature}
+                </li>
+              ))}
+            </ul>
+          </Col>
+        </Row>
+      </Card>
       <Divider />
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12}>
